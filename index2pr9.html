@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Практична 9: Форми та JavaScript</title>
+<style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+    h1, h2, h3 { color: #2c3e50; }
+    p { margin-bottom: 1em; }
+    label { display: block; margin-top: 10px; }
+    input, select, textarea { margin-top: 5px; margin-bottom: 10px; width: 300px; padding: 5px; }
+    button { padding: 8px 15px; margin-top: 10px; background-color: #2980b9; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background-color: #3498db; }
+</style>
+</head>
+<body>
+
+<h1>Практична 9: Форми та JavaScript</h1>
+
+<p>Ця практична демонструє використання різних форм для введення даних та обробки їх за допомогою JavaScript. Студент може експериментувати з формами та перевіряти, як обробляються дані у браузері.</p>
+
+<h2>1. Введення імені та вітання</h2>
+<label for="name">Введіть своє ім’я:</label>
+<input type="text" id="name" placeholder="Ваше ім'я">
+<button onclick="greetUser()">Привітати</button>
+<p id="greeting"></p>
+
+<h2>2. Обчислення квадрата числа</h2>
+<label for="number">Введіть число:</label>
+<input type="number" id="number" placeholder="Число">
+<button onclick="calculateSquare()">Обчислити квадрат</button>
+<p id="squareResult"></p>
+
+<h2>3. Вибір кольору</h2>
+<label>Оберіть колір:</label>
+<input type="radio" name="color" value="Червоний"> Червоний
+<input type="radio" name="color" value="Синій"> Синій
+<input type="radio" name="color" value="Зелений"> Зелений
+<button onclick="showColor()">Показати обраний колір</button>
+<p id="colorResult"></p>
+
+<h2>4. Вибір хобі</h2>
+<label>Позначте свої хобі:</label>
+<input type="checkbox" name="hobby" value="Програмування"> Програмування
+<input type="checkbox" name="hobby" value="Ігри"> Ігри
+<input type="checkbox" name="hobby" value="Спорт"> Спорт
+<button onclick="showHobbies()">Показати хобі</button>
+<p id="hobbiesResult"></p>
+
+<h2>5. Вибір рівня досвіду</h2>
+<label for="level">Оберіть свій рівень досвіду:</label>
+<select id="level">
+    <option value="Початковий">Початковий</option>
+    <option value="Середній">Середній</option>
+    <option value="Просунутий">Просунутий</option>
+</select>
+<button onclick="showLevel()">Показати рівень</button>
+<p id="levelResult"></p>
+
+<h2>6. Введення повідомлення</h2>
+<label for="message">Напишіть повідомлення:</label>
+<textarea id="message" rows="4" placeholder="Ваше повідомлення"></textarea>
+<button onclick="showMessage()">Відобразити повідомлення</button>
+<p id="messageResult"></p>
+
+<script>
+function greetUser() {
+    const name = document.getElementById("name").value;
+    document.getElementById("greeting").innerText = name ? `Привіт, ${name}!` : "Введіть ім'я";
+}
+
+function calculateSquare() {
+    const num = document.getElementById("number").value;
+    document.getElementById("squareResult").innerText = num ? `Квадрат числа ${num} = ${num*num}` : "Введіть число";
+}
+
+function showColor() {
+    const colors = document.getElementsByName("color");
+    let selected = "";
+    for (const c of colors) { if(c.checked) selected = c.value; }
+    document.getElementById("colorResult").innerText = selected ? `Ви обрали: ${selected}` : "Оберіть колір";
+}
+
+function showHobbies() {
+    const hobbies = document.getElementsByName("hobby");
+    let selected = [];
+    for (const h of hobbies) { if(h.checked) selected.push(h.value); }
+    document.getElementById("hobbiesResult").innerText = selected.length ? `Ваші хобі: ${selected.join(", ")}` : "Позначте хоча б одне хобі";
+}
+
+function showLevel() {
+    const level = document.getElementById("level").value;
+    document.getElementById("levelResult").innerText = `Ваш рівень: ${level}`;
+}
+
+function showMessage() {
+    const msg = document.getElementById("message").value;
+    document.getElementById("messageResult").innerText = msg ? `Ваше повідомлення: ${msg}` : "Напишіть повідомлення";
+}
+</script>
+
+<p>Документ можна розмістити на <a href="https://github.com/illya22021982-pixel/table-css2" target="_blank">GitHub Pages</a>.</p>
+
+</body>
+</html>
